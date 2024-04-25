@@ -1,14 +1,13 @@
 ---
-import getPublishedPosts from '@/utilities/getPublishedPosts';
-import MainI18n from "@/components/MainI18n.astro";
-import FormattedDate from '@/components/FormattedDate.astro';
-import { getRelativePostPath } from '@/utilities/getPostPath';
-import {getPostDescription} from '@/utilities/getPageDescription';
+import FormattedDate from '@/components/FormattedDate.astro'
+import MainI18n from '@/components/MainI18n.astro'
+import { getPostDescription } from '@/utilities/getPageDescription'
+import { getRelativePostPath } from '@/utilities/getPostPath'
+import getPublishedPosts from '@/utilities/getPublishedPosts'
 
-const
-	{frontmatter} = Astro.props,
-	title = frontmatter.title,
-	collection = frontmatter.collection;
+const { frontmatter } = Astro.props,
+  title = frontmatter.title,
+  collection = frontmatter.collection
 
 const posts = await getPublishedPosts(Astro.currentLocale, collection)
 ---

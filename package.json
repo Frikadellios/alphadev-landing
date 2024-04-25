@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "biomes": "bunx @biomejs/biome check --apply ./*"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.2.4",
@@ -46,6 +47,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.1",
     "@types/markdown-it": "^13.0.7",
     "@types/remove-markdown": "^0.3.4",
     "@types/sanitize-html": "^2.11.0"

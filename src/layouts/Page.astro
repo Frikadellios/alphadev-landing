@@ -1,13 +1,12 @@
 ---
-import MainI18n from "@/components/MainI18n.astro";
-import type { CommonFrontmatter } from "@/types";
+import MainI18n from '@/components/MainI18n.astro'
+import type { CommonFrontmatter } from '@/types'
 interface Props {
-	frontmatter: CommonFrontmatter
+  frontmatter: CommonFrontmatter
 }
 
-const
-	{frontmatter} = Astro.props,
-	title = frontmatter?.title || '';
+const { frontmatter } = Astro.props,
+  title = frontmatter?.title || ''
 ---
 <MainI18n {frontmatter} collection="pages">
 	<main id="main" class="prose">

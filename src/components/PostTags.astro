@@ -1,11 +1,14 @@
 ---
-import { getTagPath } from '@/utilities/tags';
-import {uiStrings} from "@/i18n/uiStrings";
+import { uiStrings } from '@/i18n/uiStrings'
+import { getTagPath } from '@/utilities/tags'
 interface Props {
-	tags: string[]
+  tags: string[]
 }
-const {tags} = Astro.props
-const uiString = tags.length === 1 ? uiStrings.tagHeadingSingular[Astro.currentLocale] : uiStrings.tagHeadingPlural[Astro.currentLocale] 
+const { tags } = Astro.props
+const uiString =
+  tags.length === 1
+    ? uiStrings.tagHeadingSingular[Astro.currentLocale]
+    : uiStrings.tagHeadingPlural[Astro.currentLocale]
 ---
 
 <p>

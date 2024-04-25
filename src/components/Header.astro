@@ -1,12 +1,13 @@
 ---
-import { defaultLocale, fallback } from '@/i18n/i18n';
-import HeaderLink from './HeaderLink.astro';
-import { headerMenu } from '@/header';
-import type { navigationItem } from '@/header';
+import { headerMenu } from '@/header'
+import type { navigationItem } from '@/header'
+import { defaultLocale, fallback } from '@/i18n/i18n'
+import HeaderLink from './HeaderLink.astro'
 
-const menuLocale: string =  headerMenu[Astro.currentLocale] ? Astro.currentLocale : fallback[Astro.currentLocale] || defaultLocale
+const menuLocale: string = headerMenu[Astro.currentLocale]
+  ? Astro.currentLocale
+  : fallback[Astro.currentLocale] || defaultLocale
 const headerMenuItems: navigationItem[] = headerMenu[menuLocale].items
-
 ---
 
 <header>
