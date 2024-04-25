@@ -10,10 +10,17 @@ const sitemapLocales = Object.fromEntries(
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
+import vercel from '@astrojs/vercel/serverless'
+import yaml from '@rollup/plugin-yaml'
+import icon from 'astro-icon'
 import million from 'million/compiler'
-import icon from "astro-icon";
+import { remarkReadingTime } from './src/utilities/readingTime.mjs'
 
+// https://astro.build/config
 export default defineConfig({
+  prefetch: {
+    prefetchAll: true,
+  },
   vite: {
     plugins: [
       million.vite({
@@ -25,6 +32,7 @@ export default defineConfig({
         },
       }),
       tailwindcss(),
+      yaml(),
     ],
   },
   site: site,
@@ -39,9 +47,9 @@ export default defineConfig({
     }),
     react(),
     svelte(),
-	icon({
-		iconDir: "src/assets/icons"
-	  }),
+    icon({
+      iconDir: 'src/assets/icons',
+    }),
   ],
   i18n: {
     defaultLocale: defaultLocale,
@@ -57,5 +65,13 @@ export default defineConfig({
         },
       ],
     ],
+    remarkPlugins: [remarkReadingTime],
+    drafts: true,
+    shikiConfig: {
+      theme: 'material-theme-palenight',
+      wrap: true,
+    },
   },
+  output: 'server',
+  adapter: vercel(),
 })

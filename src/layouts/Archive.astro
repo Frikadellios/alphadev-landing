@@ -1,10 +1,10 @@
 ---
-import getPublishedPosts from '@/utilities/getPublishedPosts'
-import MainI18n from '@/components/MainI18n.astro'
 import FormattedDate from '@/components/FormattedDate.astro'
-import { getRelativePostPath } from '@/utilities/getPostPath'
+import MainI18n from '@/components/MainI18n.astro'
 import BlogHeader from '@/components/blog-header.astro'
 import { Badge } from '@/components/ui/badge'
+import { getRelativePostPath } from '@/utilities/getPostPath'
+import getPublishedPosts from '@/utilities/getPublishedPosts'
 
 const { frontmatter } = Astro.props
 const title = frontmatter.title

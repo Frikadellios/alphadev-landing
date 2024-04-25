@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss'
-import { uiStrings } from '@i18n/uiStrings'
-import { getPostsToRenderInRSS } from '@utilities/getPostsToRenderInRSS'
+import { uiStrings } from '@/i18n/uiStrings'
+import { getPostsToRenderInRSS } from '@/utilities/getPostsToRenderInRSS'
 import type { APIContext } from 'astro'
 import MarkdownIt from 'markdown-it'
 import sanitizeHtml from 'sanitize-html'

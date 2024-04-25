@@ -1,9 +1,9 @@
 import type * as React from 'react'
 
+import { Image } from 'astro:assets'
 import Callout from '@/components/callout.astro'
 import MdxCard from '@/components/content/mdx-card.astro'
 import { cn } from '@/lib/utils'
-import { Image } from 'astro:assets'
 
 type Props = {
   className?: string
@@ -101,11 +101,11 @@ export const MdxComponents = {
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
     // biome-ignore lint/a11y/useAltText: <explanation>
-<img className={cn('rounded-md border', className)} alt={alt} {...props} />
+    <img className={cn('rounded-md border', className)} alt={alt} {...props} />
   ),
-  hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
+  hr: ({ ...props }) => <hr className='my-4 md:my-8' {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
+    <div className='my-6 w-full overflow-y-auto'>
       <table className={cn('w-full', className)} {...props} />
     </div>
   ),
