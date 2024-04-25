@@ -11,6 +11,7 @@ import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import million from 'million/compiler'
+import icon from "astro-icon";
 
 export default defineConfig({
   vite: {
@@ -38,6 +39,9 @@ export default defineConfig({
     }),
     react(),
     svelte(),
+	icon({
+		iconDir: "src/assets/icons"
+	  }),
   ],
   i18n: {
     defaultLocale: defaultLocale,
