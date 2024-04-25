@@ -16,7 +16,7 @@ import yaml from '@rollup/plugin-yaml'
 import astroExpressiveCode from 'astro-expressive-code'
 import icon from 'astro-icon'
 import million from 'million/compiler'
-import { remarkReadingTime } from './src/utilities/readingTime.mjs'
+import { remarkReadingTime } from './remark-reading-time.mjs';
 
 import robotsTxt from 'astro-robots-txt'
 
@@ -79,6 +79,9 @@ export default defineConfig({
   i18n: {
     defaultLocale: defaultLocale,
     locales: locales,
+    routing: {
+      prefixDefaultLocale: true
+  },
   },
   markdown: {
     rehypePlugins: [

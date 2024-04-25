@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import Byline from '@/components/Byline.astro'
 import MainI18n from '@/components/MainI18n.astro'
@@ -11,9 +10,11 @@ import Layout from './Layout.astro'
 type Props = CollectionEntry<'blog'>['data']
 
 const frontmatter = Astro.props
-const { title, pubDate, updatedDate, previewImage, tags, author, category } =
-  Astro.props
-const realTags: string[] = tags.filter(tag => {
+import { Image } from 'astro:assets'
+
+const  { title, pubDate, updatedDate, previewImage, tags, author, category, } = Astro.props
+
+const realTags: string[] = tags.filter((tag: string) => {
   return tag !== 'other'
 })
 ---
@@ -60,6 +61,7 @@ const realTags: string[] = tags.filter(tag => {
             >
               {title}
             </h1>
+    
             <Byline authorFullName={author} {pubDate} {updatedDate} />
             <hr class="my-6" />
             <div>
