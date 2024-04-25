@@ -129,6 +129,32 @@ body {
   @apply text-base;
 }
 
+:where(.prose) {
+	:where(h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol) {
+		margin-top: 1em;
+	}
+
+	:where(ul, ol) {
+		padding-inline-start: 1em;
+
+		:where(ul, ol) {
+			margin-top: 0;
+		}
+	}
+
+	:where(ul) {
+		list-style-type: initial;
+	}
+
+	:where(ol) {
+		list-style-type: decimal;
+	}
+
+	:where(li) :where(p:first-child) {
+		margin: 0;
+	}
+}
+
 h1 {
   @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-foreground;
   z-index: 2;
@@ -173,7 +199,7 @@ p {
 
 :is([data-theme="dark"] .expressive-code .frame) {
   --code-background: var(--sl-color-bg) !important;
-  --ec-brdCol: hsl(235, 5%, 12%);
+  --ec-brdCol: oklch(89.33% 0.17190800551761173 165.35314232524098);
   --ec-frm-trmTtbBg: var(--ec-brdCol);
   --ec-frm-trmTtbBrdBtmCol: var(--ec-brdCol);
   --ec-frm-edTabBarBrdBtmCol: var(--ec-brdCol);
@@ -473,21 +499,10 @@ html {
   }
   
   .markdown code {
-    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm;
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] text-sm;
   }
+ 
   
-  .sl-markdown-content :is(h1, h2, h3, h4, h5, h6) > a {
-      @apply text-foreground transition-colors duration-300 hover:text-primary-purple focus:text-neon-cyan focus:outline-none focus-visible:outline-none;
-    }
-  
-  .right-sidebar a:not([aria-current="true"]):hover {
-    color: var(--color-foreground);
-    @apply transition-colors duration-300 hover:text-cyan-500 focus:text-cyan-600 focus:outline-none focus-visible:outline-none;
-  }
-  
-  .right-sidebar a:hover {
-    @apply transition-colors duration-300 hover:text-cyan-500 focus:text-cyan-600 focus:outline-none focus-visible:outline-none;
-  }
   
   .social-icons a {
     @apply text-foreground transition-colors duration-300 hover:text-cyan-500 focus:text-cyan-600 focus:outline-none focus-visible:outline-none;
@@ -517,30 +532,6 @@ html {
                 0 0 100px oklch(91.3% 0.139 195.8/50%);
   }
 
-  .content-panel {
-    border: none !important;
-    @apply py-3;
-  }
-  
-  .right-sidebar a {
-    background: transparent !important;
-    @apply transition-colors;
-  }
-  
-  .right-sidebar a[aria-current="true"] {
-    color: var(--color-neon-cyan);
-    font-weight: 500;
-  }
-  
-  .right-sidebar a:not([aria-current="true"]):hover {
-    color: var(--color-neon-cyan);
-  }
-  
-  .right-sidebar a:hover {
-    color: var(--color-neon-cyan);
-    @apply underline;
-  }
-  
   .social-icons a {
     @apply text-foreground;
   }

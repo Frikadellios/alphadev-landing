@@ -35,7 +35,7 @@ type Props = CollectionEntry<'blog'>
 const post = Astro.props
 const { Content } = await post.render()
 post.data.description = getPostDescription(post)
-export const prerender = true;
+export const prerender = true
 ---
 
 <Post {...post.data}>

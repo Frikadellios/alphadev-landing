@@ -33,6 +33,6 @@ export async function getStaticPaths() {
   return allPeoplePages
 }
 const frontmatter = Astro.props
-export const prerender = true;
+export const prerender = true
 ---
 <Person {frontmatter} />

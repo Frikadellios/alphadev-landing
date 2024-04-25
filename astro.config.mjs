@@ -7,14 +7,18 @@ import { defaultLocale, locales } from './src/i18n/i18n'
 const sitemapLocales = Object.fromEntries(
   locales.map((_, i) => [locales[i], locales[i]]),
 ) // Create an object with keys and values based on locales
+import partytown from '@astrojs/partytown'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import vercel from '@astrojs/vercel/serverless'
 import yaml from '@rollup/plugin-yaml'
+import astroExpressiveCode from 'astro-expressive-code'
 import icon from 'astro-icon'
 import million from 'million/compiler'
 import { remarkReadingTime } from './src/utilities/readingTime.mjs'
+
+import robotsTxt from 'astro-robots-txt'
 
 // https://astro.build/config
 export default defineConfig({
@@ -37,7 +41,18 @@ export default defineConfig({
   },
   site: site,
   integrations: [
-    mdx(),
+    astroExpressiveCode({
+      themes: ['material-theme-palenight', 'material-theme-palenight'],
+      shiki: {},
+    }),
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: {
+        theme: 'material-theme-palenight',
+        wrap: true,
+      },
+      drafts: true,
+    }),
     sitemap({
       filter: page => page.secret !== true,
       i18n: {
@@ -49,6 +64,16 @@ export default defineConfig({
     svelte(),
     icon({
       iconDir: 'src/assets/icons',
+    }),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+        debug: false,
+      },
+    }),
+    robotsTxt({
+      sitemap: 'https://www.devopsick.com/sitemap-0.xml',
+      host: 'devopsick.com',
     }),
   ],
   i18n: {
