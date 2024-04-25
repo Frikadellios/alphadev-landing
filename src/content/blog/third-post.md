@@ -1,6 +1,6 @@
 ---
 title: 'Third post'
-author: 'Ana Grigoryan'
+author: 'Hrihorii Ilin'
 description: ''
 pubDate: 'Jul 15 2022'
 previewImage: '/blog-placeholder-2.jpg'

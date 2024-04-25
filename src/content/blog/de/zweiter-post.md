@@ -1,6 +1,6 @@
 ---
 title: 'Zweiter Post'
-author: Fatima Rodríguez
+author: 'Hrihorii Ilin'
 description: 'Damit Ihr indess erkennt'
 pubDate: 'Jul 22 2022'
 previewImage: '/blog-placeholder-4.jpg'

@@ -1,7 +1,7 @@
 ---
 title: 'Second post'
 description: ''
-author: 'Jana Pulanke'
+author: 'Hrihorii Ilin'
 pubDate: 'Jul 10 2022'
 previewImage: '/blog-placeholder-4.jpg'
 reference: second-post

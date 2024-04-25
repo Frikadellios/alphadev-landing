@@ -12,7 +12,7 @@ type PathNames = {
 export const defaultLocale: string = 'en'
 export const locales = ['en', 'nl', 'de', 'fr', 'uk', 'ru', 'es', ]
 export const fallback: Fallback = {
-  nl: 'en',
+  uk: 'en',
 }
 // Define the paths for collections
 export const collectionDirectoryNames: PathNames = {

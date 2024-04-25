@@ -8,7 +8,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     image: image().optional(),
-    author: z.string().optional(),
+    author: z.enum(['Hrihorii Ilin']),
     category: z.string().optional(),
     reference: z.string().optional(),
     // Transform string to Date object

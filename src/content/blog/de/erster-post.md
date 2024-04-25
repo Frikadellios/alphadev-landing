@@ -3,6 +3,7 @@ title: 'Erster Post'
 description: 'Dagegen tadelt und hasst man mit Recht'
 pubDate: 'Jul 07 2022'
 previewImage: '/blog-placeholder-3.jpg'
+author: 'Hrihorii Ilin'
 reference: first-post
 tags: ['Lockungen']
 ---

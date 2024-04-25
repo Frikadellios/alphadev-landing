@@ -1,6 +1,6 @@
 ---
 title: 'Derde post'
-author: 'David Müller'
+author: 'Hrihorii Ilin'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 28 2022'
 previewImage: '/blog-placeholder-3.jpg'
