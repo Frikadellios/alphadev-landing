@@ -3,6 +3,7 @@ import Page from '@/layouts/Page.astro'
 import type { CommonFrontmatter } from '@/types'
 import { getRelativePostPath } from '@/utilities/getPostPath'
 import { getPostsByTag } from '@/utilities/tags'
+import Layout from './Layout.astro'
 
 interface Frontmatter extends CommonFrontmatter {
   tag?: string
@@ -20,12 +21,24 @@ const filteredPosts = await getPostsByTag(
 )
 ---
 
-<Page {frontmatter}>
-  <ul>
-    {filteredPosts.map(({ data, slug }) => (
-      <li>
-        <a href={getRelativePostPath(Astro.currentLocale, frontmatter.collection, slug )}>{data.title}</a>
-      </li>
-    ))}
-  </ul>
-</Page>
+<Layout>
+  <Page {frontmatter}>
+    <ul>
+      {
+        filteredPosts.map(({ data, slug }) => (
+          <li>
+            <a
+              href={getRelativePostPath(
+                Astro.currentLocale,
+                frontmatter.collection,
+                slug,
+              )}
+            >
+              {data.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Page>
+</Layout>

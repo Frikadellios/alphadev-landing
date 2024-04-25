@@ -1,0 +1,67 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+import { getCategories } from '@/lib/fetchers'
+import { cn } from '@/lib/utils'
+
+
+const categories = await getCategories()
+
+type Props = {
+  title: string
+}
+
+const { title } = Astro.props
+const { category } = Astro.params
+const lang = Astro.currentLocale
+---
+
+<h1 class="inline-block font-heading text-4xl">{title}</h1>
+
+<div class="my-6 flex items-start justify-between max-md:gap-4">
+  <span
+    class="flex h-10 max-w-xs items-center rounded-md border px-2 text-muted-foreground lg:w-full lg:px-3"
+  >
+    
+    <span class="ml-2 hidden text-sm lg:flex">Search (coming soon)</span>
+  </span>
+
+  {
+    categories?.length ? (
+      <ul class="flex snap-x snap-mandatory items-center space-x-2 overflow-auto pb-2 lg:space-x-2.5">
+        <li class="flex-shrink-0 snap-start">
+          <a
+            href={`/${lang}/blog`}
+            class={cn(
+              !category ? 'select-none' : '',
+              buttonVariants({
+                variant: !category ? 'default' : 'outline',
+              }),
+            )}
+          >
+            All posts
+          </a>
+        </li>
+        {categories.map((item) => (
+          <li class="flex-shrink-0 snap-start">
+            <a
+              href={`/${lang}/blog/category/${item}`}
+              class={cn(
+                'capitalize',
+                item === category ? 'select-none' : '',
+                buttonVariants({
+                  variant: item === category ? 'default' : 'outline',
+                }),
+              )}
+            >
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div />
+    )
+  }
+</div>
+
+<hr class="mb-7" />

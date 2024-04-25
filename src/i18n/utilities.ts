@@ -4,6 +4,7 @@ export function getLocaleFromUrl(url: string): string {
   if (url === undefined) return undefined
   const parts = url.split('/').filter(el => el !== '')
   let match = ''
+  // biome-ignore lint/complexity/noForEach: <explanation>
   parts.forEach(part => {
     if (locales.includes(part)) match = part
   })

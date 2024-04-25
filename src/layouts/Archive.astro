@@ -1,9 +1,10 @@
 ---
-import FormattedDate from '@/components/FormattedDate.astro'
-import MainI18n from '@/components/MainI18n.astro'
-import { getPostDescription } from '@/utilities/getPageDescription'
-import { getRelativePostPath } from '@/utilities/getPostPath'
 import getPublishedPosts from '@/utilities/getPublishedPosts'
+import MainI18n from '@/components/MainI18n.astro'
+import FormattedDate from '@/components/FormattedDate.astro'
+import { getRelativePostPath } from '@/utilities/getPostPath'
+import BlogHeader from '@/components/blog-header.astro'
+import { Badge } from '@/components/ui/badge'
 
 const { frontmatter } = Astro.props
 const title = frontmatter.title
@@ -11,27 +12,63 @@ const collection = frontmatter.collection
 
 const posts = await getPublishedPosts(Astro.currentLocale, collection)
 ---
+
 <MainI18n {frontmatter} collection="pages">
-	<main id="main">
-		<header class="prose">
-			<h1>{title}</h1>
-			<slot/>
-		</header>
-		<ul>
-			{posts.map((post) => (
-				<li>
-					<a href={`${getRelativePostPath(Astro.currentLocale, collection, post.slug)}`}>
-						<img width={720} height={360} src={post.data.previewImage} alt="" />
-						<h2 class="title">{post.data.title}</h2>
-						<p class="date">
-							<FormattedDate date={post.data.pubDate} />
-						</p>
-					</a>
-					<blockquote cite={`${getRelativePostPath(Astro.currentLocale, collection, post.slug)}`}>
-						{getPostDescription(post)}
-					</blockquote>
-				</li>
-			))}
-		</ul>
-	</main>
+  <main id="main">
+    <header class="prose">
+      <h1>{title}</h1>
+      <slot />
+    </header>
+    <section class="container py-10">
+      <BlogHeader title="Blog" />
+
+      <div
+        class="grid grid-cols-1 gap-x-6 gap-y-9 md:grid-cols-2 md:gap-y-11 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16"
+      >
+        {
+          posts.map((post) => (
+            <article class="group space-y-4">
+              <a
+                class="flex h-52 transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl"
+                href={`${getRelativePostPath(Astro.currentLocale, collection, post.slug)}`}
+              >
+                <img
+                  class="h-full w-full overflow-hidden rounded-xl object-cover"
+                  width={400}
+                  height={200}
+                  src={post.data.previewImage}
+                  alt="descriptive text"
+                  transition:name={'img-' + post.slug}
+                />
+              </a>
+              <a
+                href={`${getRelativePostPath(Astro.currentLocale, collection, post.slug)}`}
+              >
+                <h2
+                  class="line-clamp-3 font-heading text-xl font-bold leading-snug md:text-2xl"
+                  transition:name={'title-' + post.slug}
+                >
+                  {post.data.title}
+                </h2>
+              </a>
+              <div class="flex items-center justify-between">
+                <a href={`/blog/category/${post.data.category}`}>
+                  <Badge
+                    radius="md"
+                    className="capitalize"
+                    transition:name={'category-' + post.slug}
+                  >
+                    {post.data.category}
+                  </Badge>
+                </a>
+                <span class="font-medium text-muted-foreground">
+                  <FormattedDate date={post.data.pubDate} />
+                </span>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
 </MainI18n>
