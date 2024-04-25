@@ -5,9 +5,9 @@ import { getPostDescription } from '@/utilities/getPageDescription'
 import { getRelativePostPath } from '@/utilities/getPostPath'
 import getPublishedPosts from '@/utilities/getPublishedPosts'
 
-const { frontmatter } = Astro.props,
-  title = frontmatter.title,
-  collection = frontmatter.collection
+const { frontmatter } = Astro.props
+const title = frontmatter.title
+const collection = frontmatter.collection
 
 const posts = await getPublishedPosts(Astro.currentLocale, collection)
 ---

@@ -7,8 +7,8 @@ interface Props {
   frontmatter: CommonFrontmatter
 }
 
-const { frontmatter } = Astro.props,
-  title = frontmatter.title
+const { frontmatter } = Astro.props
+const title = frontmatter.title
 ---
 <Html {frontmatter} includeCanonicalMeta={false} />
   <Header />

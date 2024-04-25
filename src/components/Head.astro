@@ -10,19 +10,19 @@ interface Props {
   includeCanonicalMeta?: boolean
 }
 
-const mode = import.meta.env.MODE,
-  { frontmatter, includeCanonicalMeta = true } = Astro.props,
-  title = frontmatter.title ? `${frontmatter.title} | ${siteTitle}` : siteTitle,
-  description = frontmatter.description,
-  file = frontmatter.file,
-  previewImage = frontmatter.previewImage || '/blog-placeholder-1.jpg',
-  canonicalURL = new URL(
+const mode = import.meta.env.MODE
+const { frontmatter, includeCanonicalMeta = true } = Astro.props
+const title = frontmatter.title ? `${frontmatter.title} | ${siteTitle}` : siteTitle
+const description = frontmatter.description
+const file = frontmatter.file
+const previewImage = frontmatter.previewImage || '/blog-placeholder-1.jpg'
+const canonicalURL = new URL(
     frontmatter.canonicalURL || Astro.url.pathname,
     Astro.site,
-  ),
-  faviconIco = mode === 'development' ? '/favicon-dev.ico' : '/favicon.ico',
-  faviconSVG = mode === 'development' ? '/favicon-dev.svg' : '/favicon.svg',
-  appleTouchIcon =
+  )
+const faviconIco = mode === 'development' ? '/favicon-dev.ico' : '/favicon.ico'
+const faviconSVG = mode === 'development' ? '/favicon-dev.svg' : '/favicon.svg'
+const appleTouchIcon =
     mode === 'development'
       ? '/apple-touch-icon-dev.png'
       : '/apple-touch-icon.png'

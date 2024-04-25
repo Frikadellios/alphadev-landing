@@ -5,8 +5,8 @@ interface Props {
   frontmatter: CommonFrontmatter
 }
 
-const { frontmatter } = Astro.props,
-  title = frontmatter?.title || ''
+const { frontmatter } = Astro.props
+const title = frontmatter?.title || ''
 ---
 <MainI18n {frontmatter} collection="pages">
 	<main id="main" class="prose">
