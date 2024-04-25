@@ -12,20 +12,20 @@ interface Props {
 
 const mode = import.meta.env.MODE
 const { frontmatter, includeCanonicalMeta = true } = Astro.props
-const title = frontmatter.title ? `${frontmatter.title} | ${siteTitle}` : siteTitle
+const title = frontmatter.title
+  ? `${frontmatter.title} | ${siteTitle}`
+  : siteTitle
 const description = frontmatter.description
 const file = frontmatter.file
 const previewImage = frontmatter.previewImage || '/blog-placeholder-1.jpg'
 const canonicalURL = new URL(
-    frontmatter.canonicalURL || Astro.url.pathname,
-    Astro.site,
-  )
+  frontmatter.canonicalURL || Astro.url.pathname,
+  Astro.site,
+)
 const faviconIco = mode === 'development' ? '/favicon-dev.ico' : '/favicon.ico'
 const faviconSVG = mode === 'development' ? '/favicon-dev.svg' : '/favicon.svg'
 const appleTouchIcon =
-    mode === 'development'
-      ? '/apple-touch-icon-dev.png'
-      : '/apple-touch-icon.png'
+  mode === 'development' ? '/apple-touch-icon-dev.png' : '/apple-touch-icon.png'
 ---
 
 <!-- Global Metadata -->

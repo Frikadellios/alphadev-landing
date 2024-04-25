@@ -5,12 +5,12 @@ import getPagePath from '@/utilities/getPagePath'
 import slugify from '@sindresorhus/slugify'
 
 export interface Person extends PersonData {
-[x: string]: any;
-[x: string]: any;
-mail: any;
-mastodon: any;
-description: any;
-mail: any;
+  [x: string]: any
+  [x: string]: any
+  mail: any
+  mastodon: any
+  description: any
+  mail: any
   fullName: string
   id: string
 }
