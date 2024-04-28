@@ -1,7 +1,7 @@
 ---
-import { getLocaleFromUrl } from "../i18n/utilities";
-import '@/layouts/Page.astro'
-const locale = getLocaleFromUrl;
+import { getLangFromUrl } from '@/i18n/utilities'
 
-return Astro.redirect(`/${locale}/`);
+const lang = getLangFromUrl(Astro.url)
+
+Astro.redirect(`/${lang}/`)
 ---

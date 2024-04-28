@@ -11,7 +11,8 @@ interface Props {
 let { description, file } = Astro.props
 if (!description) {
   const page = (await Astro.glob('../**/*.{md,mdx}')).find(
-    page => page.file === file,
+    // biome-ignore lint/complexity/useLiteralKeys: <explanation>
+    page => page['file'] === file,
   )
   description = getPageDescription(page)
 } else description = truncateDescription(description)

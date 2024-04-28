@@ -10,6 +10,7 @@ import getPublishedPosts from '@/utilities/getPublishedPosts'
 export async function getStaticPaths() {
   const collection = 'blog'
   const posts = await getPublishedPosts('', collection, '')
+  // biome-ignore lint/nursery/noEvolvingAny: <explanation>
   const postsToRender = []
 
   for (const locale of locales) {

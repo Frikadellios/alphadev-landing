@@ -7,7 +7,8 @@ import HeaderLink from './HeaderLink.astro'
 const menuLocale: string = headerMenu[Astro.currentLocale]
   ? Astro.currentLocale
   : fallback[Astro.currentLocale] || defaultLocale
-const headerMenuItems: navigationItem[] = headerMenu[menuLocale].items
+// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+const headerMenuItems: navigationItem[] = headerMenu[menuLocale]['items']
 ---
 
 <header>
